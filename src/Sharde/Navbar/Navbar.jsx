@@ -9,7 +9,7 @@ const Navbar = () => {
 
     const navlinks = <>
         <NavLink to='/'><li><button>Home</button></li></NavLink>
-        <NavLink to='/food'><li><button>Food</button></li></NavLink>
+        <NavLink className='mx-2' to='/food'><li><button>Food</button></li></NavLink>
         <NavLink to='/blog'><li><button>Blog</button></li></NavLink>
     </>
     return (
@@ -26,7 +26,7 @@ const Navbar = () => {
                 <img className='w-16' src={logo} alt="" />
             </div>
             <div className="navbar-center  hidden lg:flex">
-                <ul className="menu text-white font-extrabold text-xl menu-horizontal px-1">
+                <ul className="menu text-orange-500 font-extrabold text-xl menu-horizontal px-1">
                     {navlinks}
                 </ul>
             </div>
@@ -41,11 +41,13 @@ const Navbar = () => {
                         <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
                             <li>
                                 <a className="justify-between">
-                                    Profile
+                                    {user?.displayName}
                                     <span className="badge">New</span>
                                 </a>
                             </li>
                             <Link to='/addfood'><li><button>Add Food Items</button></li></Link>
+                            <Link to='/addedfood'><li><button>Added Food</button></li></Link>
+                            <Link to='/orders'><li><button>Orders</button></li></Link>
                             <li><button onClick={logout}>Logout</button></li>
                         </ul>
                     </div> :

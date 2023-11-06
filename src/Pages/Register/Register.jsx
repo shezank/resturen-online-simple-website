@@ -80,7 +80,7 @@ const Register = () => {
                         <div className="flex flex-col items-center justify-center xl:flex-row">
 
                             <div className="w-full max-w-xl xl:px-8 xl:w-5/12">
-                                <div className="bg-white rounded shadow-2xl p-7 sm:p-10">
+                                <div className="glass rounded shadow-2xl p-7 sm:p-10">
                                     <h3 className="mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl">
                                         Sign up for Orders
                                     </h3>
@@ -154,7 +154,7 @@ const Register = () => {
                                         <p className='text-red-600'>{error}</p>
                                             <button
                                                 type="submit"
-                                                className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-green-500 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                                                className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-green-500 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-white focus:shadow-outline focus:outline-none"
                                             >
                                                 Register
                                             </button>

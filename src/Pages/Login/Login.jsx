@@ -52,14 +52,14 @@ const Login = () => {
             })
     }
     return (
-        <div>
+        <div className=''>
             <div className="relative -top-20">
                 <img
                     src="https://images.pexels.com/photos/3228766/pexels-photo-3228766.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
                     className="absolute inset-0 object-cover w-full h-full"
                     alt=""
                 />
-                <div className="relative bg-opacity-75 bg-deep-purple-accent-700">
+                <div className="relative bg-opacity-75 ">
                     <svg
                         className="absolute inset-x-0 bottom-0 text-white"
                         viewBox="0 0 1160 163"
@@ -73,7 +73,7 @@ const Login = () => {
                         <div className="flex flex-col items-center justify-center xl:flex-row">
 
                             <div className="w-full max-w-xl xl:px-8 xl:w-5/12">
-                                <div className="bg-white rounded shadow-2xl p-7 sm:p-10">
+                                <div className=" glass rounded shadow-2xl p-7 sm:p-10">
                                     <h3 className="mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl">
                                         Login Your Account
                                     </h3>
@@ -114,7 +114,7 @@ const Login = () => {
                                         <div className="mt-4 mb-2 sm:mb-4">
                                             <button
                                                 type="submit"
-                                                className="inline-flex text-xl items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-red-500 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                                                className="inline-flex text-xl items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
                                             >
                                                 Login
                                             </button>

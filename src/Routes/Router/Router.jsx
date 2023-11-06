@@ -8,6 +8,9 @@ import AddFood from '../../Pages/AddFood/AddFood';
 import NotFound from '../../Sharde/NotFound/NotFound';
 import Login from '../../Pages/Login/Login';
 import Register from '../../Pages/Register/Register';
+import AddedFood from '../../Pages/AddedFood/AddedFood';
+import ProductDetails from '../../Pages/Food/ProductDetails';
+import OrderFoods from '../../Pages/OrderFoods/OrderFoods';
 
 
 const router = createBrowserRouter([
@@ -22,7 +25,13 @@ const router = createBrowserRouter([
       },
       {
         path: '/food',
-        element: <Food />
+        element: <Food />,
+        loader: ()=> fetch('http://localhost:5000/products')
+      },
+      {
+        path: '/food/details/:id',
+        element: <ProductDetails/>,
+        loader: ({params}) => fetch(`http://localhost:5000/products/details/${params.id}`)
       },
       {
         path: '/blog',
@@ -31,6 +40,14 @@ const router = createBrowserRouter([
       {
         path: '/addfood',
         element: <AddFood />
+      },
+      {
+        path: '/addedfood',
+        element: <AddedFood />
+      },
+      {
+        path: '/orders',
+        element: <OrderFoods />
       },
       {
         path: '/login',
