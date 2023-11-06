@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/Logo.png';
 import './Navbar.css';
+import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const Navbar = () => {
+    const { user, logout } = useContext(AuthContext);
 
     const navlinks = <>
         <NavLink to='/'><li><button>Home</button></li></NavLink>
@@ -29,24 +31,26 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <div className="dropdown dropdown-end">
-                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                            <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                        </div>
-                    </label>
-                    <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                        <li>
-                            <a className="justify-between">
-                                Profile
-                                <span className="badge">New</span>
-                            </a>
-                        </li>
-                       <Link to='/addfood'><li><button>Add Food Items</button></li></Link>
-                        <li><a>Logout</a></li>
-                    </ul>
-                </div>
-                <Link to='/login'><button className='btn'>Login</button></Link>
+                {user ?
+                    <div className="dropdown dropdown-end">
+                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                                <img src={user?.photoURL? user?.photoURL : ""} />
+                            </div>
+                        </label>
+                        <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                            <li>
+                                <a className="justify-between">
+                                    Profile
+                                    <span className="badge">New</span>
+                                </a>
+                            </li>
+                            <Link to='/addfood'><li><button>Add Food Items</button></li></Link>
+                            <li><button onClick={logout}>Logout</button></li>
+                        </ul>
+                    </div> :
+                    <Link to='/login'><button className='btn'>Login</button></Link>
+                }
             </div>
         </div>
     );

@@ -1,40 +1,60 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Sharde/AuthProvider/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 import axios from 'axios';
+import Swal from 'sweetalert2';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
     const { createUser } = useContext(AuthContext);
+    const [error, setError] = useState('');
     const handleRegister = e => {
         e.preventDefault()
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        const fullname = form.fullname.value;
+        const userName = form.userName.value;
         const photourl = form.photourl.value;
-        const user = { email, password, name: fullname, user_Img: photourl };
-        console.log(user);
+        const user = { email, password, userName, user_Img: photourl };
+        setError('');
+        if (userName.length < 5) {
+            return setError("User Name Use less than 5 characters")
+        }
+        else if (password.length < 6) {
+            return setError("Password less than 6 characters")
+        }
+        else if (password.search(/^(?=.*[A-Z]).*$/)) {
+            return setError("Don't have a capital letter")
+
+        }
+        else if (password.search(/^(?=.*[!@#$%&?]).*$/)) {
+            return setError("don't have a special character")
+        }
         createUser(email, password)
             .then(res => {
                 console.log(res.user)
                 updateProfile(res.user, {
-                    displayName: fullname, photoURL: photourl
+                    displayName: userName, photoURL: photourl
                 })
 
                 axios.post('http://localhost:5000/users', user)
-                .then(res => {
-                    console.log(res.data)
-                    Swal.fire(
-                        'Register!',
-                        'Successfully Register Your Account!',
-                        'success'
-                      ) 
-                })
-                    
+                    .then(res => {
+                        console.log(res.data)
+                        if (res.data?.insertedId) {
+
+                            Swal.fire(
+                                'Register!',
+                                'Successfully Register Your Account!',
+                                'success'
+                            )
+                        }
+                    })
+
             })
             .catch(err => {
-                console.log(err)
+               toast.error(err.message)
             })
     }
 
@@ -70,15 +90,15 @@ const Register = () => {
                                                 htmlFor="firstName"
                                                 className="inline-block mb-1 font-medium"
                                             >
-                                                Full Name
+                                                User Name
                                             </label>
                                             <input
-                                                placeholder="John"
+                                                placeholder="John11"
                                                 required
                                                 type="text"
                                                 className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
-                                                id="fullname"
-                                                name="fullname"
+                                                id="userName"
+                                                name="userName"
                                             />
                                         </div>
 
@@ -131,6 +151,7 @@ const Register = () => {
                                             />
                                         </div>
                                         <div className="mt-4 mb-2 sm:mb-4">
+                                        <p className='text-red-600'>{error}</p>
                                             <button
                                                 type="submit"
                                                 className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-green-500 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
@@ -148,6 +169,7 @@ const Register = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };

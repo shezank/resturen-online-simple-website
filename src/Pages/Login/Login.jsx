@@ -1,14 +1,55 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Sharde/AuthProvider/AuthProvider';
+import Swal from 'sweetalert2';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { FaBeer, FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
 
-    const handleLogin = e =>{
+    const { login, googleLogin } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const handleLogin = e => {
         e.preventDefault()
-        const form = e.target ;
+        const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password)
+        login(email, password)
+            .then(res => {
+                if (res.user) {
+                    Swal.fire({
+                        title: "Successfully!",
+                        text: "Login Your Account",
+                        icon: "success"
+                    });
+                }
+                navigate('/')
+            })
+            .catch(error => {
+                toast.error(error.message)
+            })
+
+    }
+
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(res => {
+                console.log(res.result)
+                if (res.result) {
+                    Swal.fire({
+                        title: "Successfully!",
+                        text: "Login Your Account",
+                        icon: "success"
+                    });
+                }
+                navigate('/')
+            })
+            .catch(err => {
+                toast.error(err.message)
+            })
     }
     return (
         <div>
@@ -30,14 +71,14 @@ const Login = () => {
                     </svg>
                     <div className="relative px-4 py-16 mx-auto overflow-hidden sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
                         <div className="flex flex-col items-center justify-center xl:flex-row">
-                            
+
                             <div className="w-full max-w-xl xl:px-8 xl:w-5/12">
                                 <div className="bg-white rounded shadow-2xl p-7 sm:p-10">
                                     <h3 className="mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl">
-                                       Login Your Account
+                                        Login Your Account
                                     </h3>
                                     <form onSubmit={handleLogin}>
-                                        
+
                                         <div className="mb-1 sm:mb-2">
                                             <label
                                                 htmlFor="email"
@@ -73,7 +114,7 @@ const Login = () => {
                                         <div className="mt-4 mb-2 sm:mb-4">
                                             <button
                                                 type="submit"
-                                                className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-red-500 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                                                className="inline-flex text-xl items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-red-500 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                                             >
                                                 Login
                                             </button>
@@ -82,12 +123,25 @@ const Login = () => {
                                             Do Not Hava A Account Please <Link to={'/register'} ><button className='text-green-500'>Register</button></Link>
                                         </p>
                                     </form>
+                                    <hr />
+                                    <div className="mt-4 mb-2 sm:mb-4">
+                                        <button
+                                            onClick={handleGoogleLogin}
+                                            type="submit"
+                                            className="inline-flex text-xl font-extrabold items-center justify-center w-full h-12 px-6 tracking-wide text-blue-500 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                                        >
+                                            <FaGoogle className='mr-1'></FaGoogle>
+                                            Google
+                                        </button>
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };
