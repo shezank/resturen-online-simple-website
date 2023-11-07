@@ -61,7 +61,7 @@ const OrderFoods = () => {
                         {
                             orders.map(order => <>
                                 {/* row 1 */}
-                                <tr>
+                                <tr key={order._id}>
 
                                     <td>
                                         <div className="flex items-center space-x-3">

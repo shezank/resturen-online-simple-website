@@ -31,7 +31,7 @@ const AddedFood = () => {
                                 {
                                     products.map(product => <>
                                         {/* row 1 */}
-                                        <tr>
+                                        <tr key={product._id}>
 
                                             <td>
                                                 <div className="flex items-center space-x-3">
@@ -40,7 +40,6 @@ const AddedFood = () => {
                                                             <img src={product.foodImg} alt={product.foodName} />
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </td>
                                             <td>

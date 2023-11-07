@@ -4,19 +4,14 @@ import { Link } from 'react-router-dom';
 import TopFood from './TopFood';
 
 const TopFoods = () => {
-    const [count, setCount]= useState(0);
-    const [products, setProducts] = useState([]);
+    const [orders, setOrders]= useState([]);
     const currenPage = 0;
     const itemPerPages = 6;
     useEffect(()=>{
-        axios.get('http://localhost:5000/productsCount')
-        .then(res => setCount(res.data.count))
+        axios.get(`http://localhost:5000/orders?page=${currenPage}&size=${itemPerPages}`)
+        .then(res => setOrders(res.data))
     },[])
 
-    useEffect(()=>{
-        axios.get( `http://localhost:5000/products?page=${currenPage}&size=${itemPerPages}`)
-        .then(res => setProducts(res.data))
-    },[])
     return (
         <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
             <div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
@@ -58,8 +53,9 @@ const TopFoods = () => {
                 </p>
             </div>
             <div className="grid max-w-screen-lg gap-8 row-gap-5 mb-8 sm:grid-cols-2 lg:grid-cols-3 sm:mx-auto">
+                
                 {
-                    products.map(product => <TopFood key={product._id} product={product}></TopFood>)
+                    orders.map(order => <TopFood key={order._id} order={order}></TopFood>)
                 }
             </div>
             <div className="flex items-center sm:justify-center">
