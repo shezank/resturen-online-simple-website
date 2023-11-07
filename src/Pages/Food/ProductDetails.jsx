@@ -14,8 +14,8 @@ const ProductDetails = () => {
     const handeleOrder = () => {
         const orderProducts = {
             foodName, foodImg, foodCategory, quantity, price, orderOwnerName, ownerEmail, country, description, 
-            orderEmail: user.email,
-            orderName: user.displayName
+            orderEmail: user?.email,
+            orderName: user?.displayName
         }
         axios.post('http://localhost:5000/orders', orderProducts)
             .then(res => {

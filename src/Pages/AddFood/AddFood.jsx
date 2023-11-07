@@ -5,7 +5,6 @@ import Swal from 'sweetalert2';
 
 const AddFood = () => {
     const {user} = useContext(AuthContext);
-    console.log(user.uid)
 
     const handleAddProduct = e => {
         e.preventDefault()

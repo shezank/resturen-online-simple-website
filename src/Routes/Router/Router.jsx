@@ -11,6 +11,8 @@ import Register from '../../Pages/Register/Register';
 import AddedFood from '../../Pages/AddedFood/AddedFood';
 import ProductDetails from '../../Pages/Food/ProductDetails';
 import OrderFoods from '../../Pages/OrderFoods/OrderFoods';
+import PrivateRoute from '../../Sharde/PrivateRoute/PrivateRoute';
+import UpdateFood from '../../Pages/AddedFood/UpdateFood';
 
 
 const router = createBrowserRouter([
@@ -26,11 +28,12 @@ const router = createBrowserRouter([
       {
         path: '/food',
         element: <Food />,
-        loader: ()=> fetch('http://localhost:5000/products')
+        loader: ()=> fetch('http://localhost:5000/productsCount')
+        
       },
       {
         path: '/food/details/:id',
-        element: <ProductDetails/>,
+        element: <PrivateRoute><ProductDetails/></PrivateRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/products/details/${params.id}`)
       },
       {
@@ -39,15 +42,21 @@ const router = createBrowserRouter([
       },
       {
         path: '/addfood',
-        element: <AddFood />
+        element: <PrivateRoute><AddFood /></PrivateRoute>
       },
       {
         path: '/addedfood',
-        element: <AddedFood />
+        element: <PrivateRoute><AddedFood></AddedFood></PrivateRoute>
+      },
+      {
+        path: 'products/:uid',
+        element: <PrivateRoute><UpdateFood/></PrivateRoute>,
+        loader: ({params})=> fetch(`http://localhost:5000/products/${params.uid}`)
+        
       },
       {
         path: '/orders',
-        element: <OrderFoods />
+        element: <PrivateRoute><OrderFoods /></PrivateRoute>
       },
       {
         path: '/login',

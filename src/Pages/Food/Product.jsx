@@ -15,7 +15,7 @@ const Product = ({ product }) => {
                 </div>
                 <p>{description}</p>
                 <div className="card-actions justify-end">
-                    <Link to={`/food/details/${_id}`}><button className="btn btn-primary">See Details</button></Link>
+                    <Link to={`/food/details/${_id}`}><button className="btn btn-outline btn-success">See Details</button></Link>
                 </div>
                 
             </div>

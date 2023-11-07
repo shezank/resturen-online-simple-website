@@ -6,9 +6,10 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FaGoogle } from 'react-icons/fa';
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, googleLogin } = useContext(AuthContext);
     const [error, setError] = useState('');
     const handleRegister = e => {
         e.preventDefault()
@@ -54,7 +55,24 @@ const Register = () => {
 
             })
             .catch(err => {
-               toast.error(err.message)
+                toast.error(err.message)
+            })
+    }
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(res => {
+                console.log(res.result)
+                if (res.result) {
+                    Swal.fire({
+                        title: "Successfully!",
+                        text: "Login Your Account",
+                        icon: "success"
+                    });
+                }
+                navigate('/')
+            })
+            .catch(err => {
+                toast.error(err.message)
             })
     }
 
@@ -151,10 +169,10 @@ const Register = () => {
                                             />
                                         </div>
                                         <div className="mt-4 mb-2 sm:mb-4">
-                                        <p className='text-red-600'>{error}</p>
+                                            <p className='text-red-600'>{error}</p>
                                             <button
                                                 type="submit"
-                                                className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-green-500 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-white focus:shadow-outline focus:outline-none"
+                                                className="inline-flex items-center justify-center w-full h-12 px-6 font-bold text-lg tracking-wide duration-1000 text-green-500 transition rounded shadow-md bg-black hover:bg-white focus:shadow-outline focus:outline-none"
                                             >
                                                 Register
                                             </button>
@@ -163,6 +181,17 @@ const Register = () => {
                                             Hava A Account Please <Link to='/login'><span className='text-red-500'>Login</span></Link>
                                         </p>
                                     </form>
+                                    <hr />
+                                    <div className="mt-4 mb-2 sm:mb-4">
+                                        <button
+                                            onClick={handleGoogleLogin}
+                                            type="submit"
+                                            className="inline-flex text-xl font-extrabold items-center justify-center w-full h-12 px-6 tracking-wide text-blue-500 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                                        >
+                                            <FaGoogle className='mr-1'></FaGoogle>
+                                            Google
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
