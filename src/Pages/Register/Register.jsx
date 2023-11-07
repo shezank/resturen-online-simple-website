@@ -40,7 +40,7 @@ const Register = () => {
                     displayName: userName, photoURL: photourl
                 })
 
-                axios.post('http://localhost:5000/users', user)
+                axios.post('https://kashmeri-resturent-server.vercel.app/users', user)
                     .then(res => {
                         console.log(res.data)
                         if (res.data?.insertedId) {

@@ -8,7 +8,7 @@ const TopFoods = () => {
     const currenPage = 0;
     const itemPerPages = 6;
     useEffect(()=>{
-        axios.get(`http://localhost:5000/orders?page=${currenPage}&size=${itemPerPages}`)
+        axios.get(`https://kashmeri-resturent-server.vercel.app/orders?page=${currenPage}&size=${itemPerPages}`)
         .then(res => setOrders(res.data))
     },[])
 

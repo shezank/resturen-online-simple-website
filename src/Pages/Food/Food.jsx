@@ -13,7 +13,7 @@ const Food = () => {
     const pages = [...Array(totalPages).keys()];
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/products?page=${currenPage}&size=${itemPerPages}`)
+        axios.get(`https://kashmeri-resturent-server.vercel.app/products?page=${currenPage}&size=${itemPerPages}`)
             .then(res => setproducts(res.data))
     }, [currenPage, itemPerPages])
 

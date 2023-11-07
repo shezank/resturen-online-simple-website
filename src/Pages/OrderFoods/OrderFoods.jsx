@@ -7,7 +7,7 @@ const OrderFoods = () => {
     const { user } = useContext(AuthContext);
     const [orders, setOrders] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/orders/${user?.email}`)
+        fetch(`https://kashmeri-resturent-server.vercel.app/orders/${user?.email}`)
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [])
@@ -23,7 +23,7 @@ const OrderFoods = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/orders/${id}`)
+                axios.delete(`https://kashmeri-resturent-server.vercel.app/orders/${id}`)
                     .then(res => {
                         if (res.data.deletedCount)
                             Swal.fire({

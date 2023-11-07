@@ -25,7 +25,7 @@ const UpdateFood = () => {
         const product = { userProduct: user.uid, foodName, foodImg, foodCategory, quantity, price, orderOwnerName, ownerEmail, country, description };
     
 
-        axios.put(`http://localhost:5000/products/${user.uid}`, product)
+        axios.put(`https://kashmeri-resturent-server.vercel.app/products/${user.uid}`, product)
             .then(res => {
                 console.log(res.data)
                 if(res.data.modifiedCount){

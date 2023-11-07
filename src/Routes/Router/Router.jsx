@@ -28,13 +28,13 @@ const router = createBrowserRouter([
       {
         path: '/food',
         element: <Food />,
-        loader: ()=> fetch('http://localhost:5000/productsCount')
+        loader: ()=> fetch('https://kashmeri-resturent-server.vercel.app/productsCount')
         
       },
       {
         path: '/food/details/:id',
         element: <PrivateRoute><ProductDetails/></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/products/details/${params.id}`)
+        loader: ({params}) => fetch(`https://kashmeri-resturent-server.vercel.app/products/details/${params.id}`)
       },
       {
         path: '/blog',
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
       {
         path: 'products/:uid',
         element: <PrivateRoute><UpdateFood/></PrivateRoute>,
-        loader: ({params})=> fetch(`http://localhost:5000/products/${params.uid}`)
+        loader: ({params})=> fetch(`https://kashmeri-resturent-server.vercel.app/products/${params.uid}`)
         
       },
       {

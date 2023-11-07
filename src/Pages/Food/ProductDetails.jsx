@@ -17,7 +17,7 @@ const ProductDetails = () => {
             orderEmail: user?.email,
             orderName: user?.displayName
         }
-        axios.post('http://localhost:5000/orders', orderProducts)
+        axios.post('https://kashmeri-resturent-server.vercel.app/orders', orderProducts)
             .then(res => {
                 console.log(res.data.insertedId)
                 if(res.data.insertedId){

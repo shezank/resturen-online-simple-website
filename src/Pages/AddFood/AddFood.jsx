@@ -21,7 +21,7 @@ const AddFood = () => {
         const product = {userProduct: user.uid, foodName, foodImg, foodCategory, quantity, price, orderOwnerName, ownerEmail, country, description};
         console.log(product)
 
-        axios.post('http://localhost:5000/products', product)
+        axios.post('https://kashmeri-resturent-server.vercel.app/products', product)
         .then( res =>{
             console.log(res.data)
             if(res.data.insertedId){

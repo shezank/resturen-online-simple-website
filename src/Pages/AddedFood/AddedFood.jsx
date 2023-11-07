@@ -6,7 +6,7 @@ const AddedFood = () => {
     const { user } = useContext(AuthContext);
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${user?.uid}`)
+        fetch(`https://kashmeri-resturent-server.vercel.app/products/${user?.uid}`)
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
