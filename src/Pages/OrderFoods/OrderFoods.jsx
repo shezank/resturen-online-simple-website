@@ -50,7 +50,7 @@ const OrderFoods = () => {
                 <title>Your Food Orders</title>
             </Helmet>
             <div>
-                <h1 className='text-center text-5xl font-semibold text-green-600 my-6'>Your Orderd Foods:- {orders.length}</h1>
+                <h1 className='text-center text-5xl font-semibold text-green-600 my-6'>Your Orderd Foods: {orders.length}</h1>
 
                 <div className="overflow-x-auto my-10">
                     <table className="table">

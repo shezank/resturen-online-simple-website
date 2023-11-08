@@ -11,7 +11,7 @@ const firebaseConfig = {
   projectId: "kasmeri-resturent",
   storageBucket: "kasmeri-resturent.appspot.com",
   messagingSenderId: "332807372119",
-  appId: "1:332807372119:web:6895945aaa624f11875212"
+  appId: "1:332807372119:web:6895945aaa624f11875212",
 };
 
 // Initialize Firebase
