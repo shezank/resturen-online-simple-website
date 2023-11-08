@@ -80,7 +80,7 @@ const OrderFoods = () => {
                                     </td>
                                     <td>${order.price}</td>
                                     <td>{order.orderDate}</td>
-                                    <td>{order.orderName}</td>
+                                    <td>{order.orderOwnerName}</td>
                                     <td>{order.orderEmail}</td>
                                     <td>
                                         <button onClick={() => handleDelete(order._id)} className="text-3xl"><MdDeleteForever></MdDeleteForever></button>

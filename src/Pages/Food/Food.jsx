@@ -13,7 +13,7 @@ const Food = () => {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/products?page=${currenPage}&size=${itemPerPages}`)
+        axios.get(`https://kashmeri-resturent-server.vercel.app/products?page=${currenPage}&size=${itemPerPages}`)
             .then(res => setproducts(res.data))
     }, [currenPage, itemPerPages])
 
@@ -36,7 +36,7 @@ const Food = () => {
         const form = e.target;
         const value = form.search.value.toLowerCase();
         if (value) {
-            axios.get(`http://localhost:5000/products`)
+            axios.get(`https://kashmeri-resturent-server.vercel.app/products`)
                 .then(res => {
                     const allProducts = res.data;
                     const searchProducts = allProducts.filter(product => product.foodName.toLowerCase().includes(value))
