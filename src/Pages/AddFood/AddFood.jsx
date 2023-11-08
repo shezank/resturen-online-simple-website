@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../Sharde/AuthProvider/AuthProvider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const AddFood = () => {
     const {user} = useContext(AuthContext);
@@ -37,7 +38,11 @@ const AddFood = () => {
 
 
     return (
-        <div>
+        <HelmetProvider>
+            <div>
+                <Helmet>
+                    <title>Add A Food Item</title>
+                </Helmet>
             <div className="w-full max-w-5xl mx-auto my-10">
                 <div className="bg-white rounded shadow-2xl p-7 sm:p-10">
                     <h3 className="mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl">
@@ -213,6 +218,7 @@ const AddFood = () => {
                 </div>
             </div>
         </div>
+        </HelmetProvider>
     );
 };
 
