@@ -36,7 +36,6 @@ const AddFood = () => {
         })
     }
 
-
     return (
         <HelmetProvider>
             <div>

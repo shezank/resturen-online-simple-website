@@ -92,7 +92,7 @@ const Login = () => {
                                                     E-mail
                                                 </label>
                                                 <input
-                                                    placeholder="john.doe@example.org"
+                                                    placeholder="email@example.com"
                                                     required
                                                     type="text"
                                                     className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
@@ -133,7 +133,7 @@ const Login = () => {
                                             <button
                                                 onClick={handleGoogleLogin}
                                                 type="submit"
-                                                className="inline-flex text-xl font-extrabold items-center justify-center w-full h-12 px-6 tracking-wide text-blue-500 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                                                className="inline-flex text-xl font-extrabold items-center justify-center w-full h-12 px-6 tracking-wide text-white transition duration-500 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
                                             >
                                                 <FaGoogle className='mr-1'></FaGoogle>
                                                 Google
