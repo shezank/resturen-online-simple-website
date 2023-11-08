@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 const OrderFoods = () => {
     const { user } = useContext(AuthContext);
     const [orders, setOrders] = useState([])
+    console.log(orders)
     useEffect(() => {
         fetch(`https://kashmeri-resturent-server.vercel.app/orders/${user?.email}`)
             .then(res => res.json())
@@ -52,6 +53,7 @@ const OrderFoods = () => {
                             <th>Photo</th>
                             <th>Food Name</th>
                             <th>Price</th>
+                            <th>Date</th>
                             <th>Booking Name</th>
                             <th>email</th>
                             <th>Action</th>
@@ -77,6 +79,7 @@ const OrderFoods = () => {
                                         {order.foodName}
                                     </td>
                                     <td>${order.price}</td>
+                                    <td>{order.orderDate}</td>
                                     <td>{order.orderName}</td>
                                     <td>{order.orderEmail}</td>
                                     <td>

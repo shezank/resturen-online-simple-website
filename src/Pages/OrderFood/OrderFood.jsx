@@ -15,9 +15,9 @@ const OrderFood = () => {
         const foodCategory = form.foodCategory.value;
         const price = form.price.value;
         const orderOwnerName = form.orderOwnerName.value;
-        const ownerEmail = form.ownerEmail.value;
+        const orderEmail = form.orderEmail.value;
 
-        const product = { orderDate, foodName, foodImg: loader.foodImg, foodCategory, price, orderOwnerName, ownerEmail, country: loader.country };
+        const product = { orderDate, foodName, foodImg: loader.foodImg, foodCategory, price, orderOwnerName, orderEmail, country: loader.country };
 
 
         axios.post(`https://kashmeri-resturent-server.vercel.app/orders`, product)
@@ -130,8 +130,8 @@ const OrderFood = () => {
                                     required
                                     type="email"
                                     className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
-                                    id="ownerEmail"
-                                    name="ownerEmail"
+                                    id="orderEmail"
+                                    name="orderEmail"
                                 />
                             </div>
 
