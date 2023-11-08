@@ -13,7 +13,7 @@ const TopFood = ({ order }) => {
                     <div className="badge badge-secondary">{foodCategory}</div>
                 </h2>
             </div>
-            <Link className='btn bg-orange-500 text-white duration-500 hover:bg-black rounded-t-none' to='/food'><button>Details</button></Link>
+            <Link className='btn bg-orange-500 text-lg text-white duration-500 hover:bg-black rounded-t-none' to='/food'><button>Details</button></Link>
         </div>
     );
 };

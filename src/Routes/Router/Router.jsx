@@ -13,6 +13,7 @@ import ProductDetails from '../../Pages/Food/ProductDetails';
 import OrderFoods from '../../Pages/OrderFoods/OrderFoods';
 import PrivateRoute from '../../Sharde/PrivateRoute/PrivateRoute';
 import UpdateFood from '../../Pages/AddedFood/UpdateFood';
+import OrderFood from '../../Pages/OrderFood/OrderFood';
 
 
 const router = createBrowserRouter([
@@ -57,6 +58,11 @@ const router = createBrowserRouter([
       {
         path: '/orders',
         element: <PrivateRoute><OrderFoods /></PrivateRoute>
+      },
+      {
+        path: '/order/:id',
+        element: <PrivateRoute><OrderFood /></PrivateRoute>,
+        loader: ({params}) => fetch(`https://kashmeri-resturent-server.vercel.app/products/details/${params.id}`)
       },
       {
         path: '/login',

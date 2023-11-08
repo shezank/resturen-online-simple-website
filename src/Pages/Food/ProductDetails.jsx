@@ -1,34 +1,11 @@
-import axios from "axios";
-import { useContext } from "react";
-import { FaMap } from "react-icons/fa";
-import { useLoaderData } from "react-router-dom";
-import { AuthContext } from "../../Sharde/AuthProvider/AuthProvider";
-import Swal from "sweetalert2";
+import { Link, useLoaderData } from "react-router-dom";
+
 
 
 const ProductDetails = () => {
     const product = useLoaderData();
-    const {user} = useContext(AuthContext);
-    const { foodName, foodImg, foodCategory, quantity, price, orderOwnerName, ownerEmail, country, description } = product;
+    const { _id, foodName, foodImg, foodCategory, price, orderOwnerName, ownerEmail, country, description } = product;
 
-    const handeleOrder = () => {
-        const orderProducts = {
-            foodName, foodImg, foodCategory, quantity, price, orderOwnerName, ownerEmail, country, description, 
-            orderEmail: user?.email,
-            orderName: user?.displayName
-        }
-        axios.post('https://kashmeri-resturent-server.vercel.app/orders', orderProducts)
-            .then(res => {
-                console.log(res.data.insertedId)
-                if(res.data.insertedId){
-                    Swal.fire({
-                        title: "Order!",
-                        text: "Successfully Place Your Order",
-                        icon: "success"
-                      });
-                }
-            })
-    }
     return (
         <div>
 
@@ -59,7 +36,7 @@ const ProductDetails = () => {
 
                                 </div>
                                 <div className="inline-block align-bottom">
-                                    <button onClick={handeleOrder} className="bg-yellow-300 opacity-75 hover:opacity-100 text-yellow-900 hover:text-gray-900 rounded-full px-10 py-2 font-semibold"><i className="mdi mdi-cart -ml-2 mr-2"></i> Order Now</button>
+                                    <Link to={`/order/${_id}`}><button className="bg-yellow-300 opacity-75 hover:opacity-100 text-yellow-900 hover:text-gray-900 rounded-full px-10 py-2 font-semibold"><i className="mdi mdi-cart -ml-2 mr-2"></i> Order Now</button></Link>
                                 </div>
                             </div>
                         </div>

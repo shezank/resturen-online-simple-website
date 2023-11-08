@@ -14,8 +14,7 @@ const Question = () => {
                                 Any Questions? Look Here
                             </h2>
                             <p className="text-base text-body-color dark:text-dark-6">
-                                There are many variations of passages of Lorem Ipsum available
-                                but the majority have suffered alteration in some form.
+                                There are many Helpfull for your Online Kasmeri Question so read carefully if you any quesition. Or you dot's have your question ans then pls email. 24/7 Open Our Support
                             </p>
                         </div>
                     </div>
@@ -24,30 +23,30 @@ const Question = () => {
                 <div className="-mx-4 flex flex-wrap">
                     <div className="w-full px-4 lg:w-1/2">
                         <AccordionItem
-                            header="How long we deliver your first blog post?"
-                            text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
+                            header="What are the restaurant's operating hours?"
+                            text="Customers frequently want to know when a restaurant is open, especially for breakfast, lunch, and dinner service."
                         />
                         <AccordionItem
-                            header="How long we deliver your first blog post?"
-                            text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
+                            header="Is there a vegetarian/vegan menu available?"
+                            text="Many diners are interested in vegetarian or vegan options, so they inquire about the availability of such dishes."
                         />
                         <AccordionItem
-                            header="How long we deliver your first blog post?"
-                            text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
+                            header="Do you offer takeout or delivery services?"
+                            text="In today's fast-paced world, many people prefer takeout or delivery, so they inquire about these services."
                         />
                     </div>
                     <div className="w-full px-4 lg:w-1/2">
                         <AccordionItem
-                            header="How long we deliver your first blog post?"
-                            text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
+                            header="Are there any gluten-free or allergen-friendly choices on the menu?"
+                            text="Customers with dietary restrictions often ask about gluten-free or allergen-friendly menu items."
                         />
                         <AccordionItem
-                            header="How long we deliver your first blog post?"
-                            text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
+                            header="What is the reservation policy for large groups or special events?"
+                            text="For group gatherings or special occasions, customers want to know about reservation options and policies."
                         />
                         <AccordionItem
-                            header="How long we deliver your first blog post?"
-                            text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
+                            header="How can I provide feedback or contact the restaurant for inquiries?"
+                            text="Diners may have feedback or questions about their dining experience, so they seek information on how to contact the restaurant."
                         />
                     </div>
                 </div>

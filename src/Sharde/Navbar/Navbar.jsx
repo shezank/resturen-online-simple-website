@@ -13,7 +13,7 @@ const Navbar = () => {
         <NavLink to='/blog'><li><button>Blog</button></li></NavLink>
     </>
     return (
-        <div className="navbar bg-transparent  relative z-10">
+        <div className="navbar glass relative z-10">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -51,7 +51,7 @@ const Navbar = () => {
                             <li><button onClick={logout}>Logout</button></li>
                         </ul>
                     </div> :
-                    <Link to='/login'><button className='btn'>Login</button></Link>
+                    <Link to='/login'><button className='btn btn-success'>Login</button></Link>
                 }
             </div>
         </div>

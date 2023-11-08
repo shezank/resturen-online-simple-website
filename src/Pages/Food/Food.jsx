@@ -4,26 +4,28 @@ import { useLoaderData } from 'react-router-dom';
 import Product from './Product';
 import axios from 'axios';
 const Food = () => {
-    const {count} = useLoaderData();
+    const { count } = useLoaderData();
     const [products, setproducts] = useState([]);
-    const [itemPerPages, setItemPerPages] = useState(10);
+    const [itemPerPages, setItemPerPages] = useState(9);
     const [currenPage, setCurrenPage] = useState(0);
-    console.log(count, currenPage)
     const totalPages = Math.ceil(count / itemPerPages);
     const pages = [...Array(totalPages).keys()];
 
+
     useEffect(() => {
-        axios.get(`https://kashmeri-resturent-server.vercel.app/products?page=${currenPage}&size=${itemPerPages}`)
+        axios.get(`http://localhost:5000/products?page=${currenPage}&size=${itemPerPages}`)
             .then(res => setproducts(res.data))
     }, [currenPage, itemPerPages])
 
-    const handleBack = ()=>{
-        if(currenPage > 0){
+
+    const handleBack = () => {
+        if (currenPage > 0) {
             setCurrenPage(currenPage - 1)
         }
     }
-    const handleNext = ()=>{
-        if(currenPage < pages.length -1){
+    
+    const handleNext = () => {
+        if (currenPage < pages.length - 1) {
             setCurrenPage(currenPage + 1)
         }
     }
@@ -32,8 +34,16 @@ const Food = () => {
     const handeleSearch = e => {
         e.preventDefault()
         const form = e.target;
-        const value = form.search.value;
-        console.log(value)
+        const value = form.search.value.toLowerCase();
+        if (value) {
+            axios.get(`http://localhost:5000/products`)
+                .then(res => {
+                    const allProducts = res.data;
+                    const searchProducts = allProducts.filter(product => product.foodName.toLowerCase().includes(value))
+                    console.log(searchProducts);
+                    setproducts(searchProducts);
+                })
+        }
         e.target.reset();
     }
     return (
@@ -64,8 +74,8 @@ const Food = () => {
                     <ul className="inline-flex">
                         <li><button onClick={handleBack} className="px-4 py-2 text-green-600 transition-colors duration-150 bg-white border border-r-0 border-green-600 rounded-l-lg focus:shadow-outline hover:bg-green-100">Prev</button></li>
                         {
-                            pages.map(page=> 
-                                <button onClick={()=> setCurrenPage(page)} className={currenPage === page ? "px-4 py-2 text-white transition-colors duration-150 bg-green-600 border border-green-600 focus:shadow-outline" : "px-4 py-2 text-green-600 transition-colors duration-150 bg-white border border-green-600 focus:shadow-outline hover:bg-green-100"}>{page}</button>
+                            pages.map(page =>
+                                <button onClick={() => setCurrenPage(page)} className={currenPage === page ? "px-4 py-2 text-white transition-colors duration-150 bg-green-600 border border-green-600 focus:shadow-outline" : "px-4 py-2 text-green-600 transition-colors duration-150 bg-white border border-green-600 focus:shadow-outline hover:bg-green-100"}>{page}</button>
                             )
                         }
                         <li><button onClick={handleNext} className="px-4 py-2 text-green-600 transition-colors duration-150 bg-white border border-green-600 rounded-r-lg focus:shadow-outline hover:bg-green-100">Next</button></li>
