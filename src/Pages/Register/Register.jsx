@@ -100,7 +100,7 @@ const Register = () => {
                             <div className="w-full max-w-xl xl:px-8 xl:w-5/12">
                                 <div className="glass rounded shadow-2xl p-7 sm:p-10">
                                     <h3 className="mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl">
-                                        Sign up for Orders
+                                        Register Your Account
                                     </h3>
                                     <form onSubmit={handleRegister}>
                                         <div className="mb-1 sm:mb-2">

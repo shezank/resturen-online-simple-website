@@ -52,7 +52,7 @@ const TopFoods = () => {
                     Check Our Food Items And get a Order As soon As possible. 24/7 Open Our Home Delivery. Just Order Your Favarite Foods Items
                 </p>
             </div>
-            <div className="grid max-w-screen-lg gap-8 row-gap-5 mb-8 sm:grid-cols-2 lg:grid-cols-3 sm:mx-auto">
+            <div className="grid max-w-screen-lg gap-8 row-gap-5 mb-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 sm:mx-auto">
                 
                 {
                     orders.map(order => <TopFood key={order._id} order={order}></TopFood>)
